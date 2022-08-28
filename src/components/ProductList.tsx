@@ -18,7 +18,7 @@ export default function ProductList({ results }: { results: SearchResult[] }) {
                                         key={`result-${resultIndex}-product-${productIndex}`}
                                         className='border w-64 rounded-xl shadow'>
                                         <img src={product.image} className='w-full h-64 object-cover border-b' alt={product.name} />
-                                        <div className='px-2 mt-2 text-center'>
+                                        <div className='px-2 mt-2 text-center text-sm'>
                                             {product.name}
                                         </div>
                                         <div className='px-2 mb-2 text-center'>

@@ -40,7 +40,7 @@ export default function App() {
                 <Input handleChange={setSearchString} />
             </div>
             <div className='w-full flex justify-center'>
-                <button onClick={search} className='flex text-xl font-thin items-center gap-2 border focus:outline-none rounded-xl px-4 py-2 bg-blue-400 hover:bg-blue-500 duration-300 text-white'>
+                <button disabled={isLoading} onClick={search} className='flex text-xl font-thin items-center gap-2 border focus:outline-none rounded-xl px-4 py-2 bg-blue-400 hover:bg-blue-500 duration-300 text-white'>
                     {isLoading ? <> <Spinner />Searching</> : <><SearchIcon />Search Product</>}
                 </button>
             </div>
