@@ -1,4 +1,4 @@
-# price-searcher-client
+# Price Searcher Client
 
 First you should install node modules with. <br>
 ```bash
