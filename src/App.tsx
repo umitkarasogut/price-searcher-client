@@ -11,9 +11,12 @@ export default function App() {
     const [searchString, setSearchString] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [results, setResults] = useState<SearchResult[] | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const search = async () => {
         setIsLoading(true);
+        setResults(null);
+        setError(null);
 
         const response = await fetch(API_URL, {
             method: 'POST',
@@ -25,9 +28,14 @@ export default function App() {
                 search: searchString
             })
         });
-        const results = await response.json();
+        
+        if (response.ok) {
+            const results = await response.json();
+            setResults(results);
+        } else {
+            setError(await response.text());
+        }
 
-        setResults(results);
         setIsLoading(false);
     };
 
@@ -46,6 +54,7 @@ export default function App() {
             </div>
             <div className='w-full flex justify-center'>
                 {results && <ProductList results={results} />}
+                {error && <p className='text-red-500 text-xl font-bold'>{error}</p>}
             </div>
         </div>
     );
