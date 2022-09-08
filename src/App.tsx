@@ -28,7 +28,7 @@ export default function App() {
                 search: searchString
             })
         });
-        
+
         if (response.ok) {
             const results = await response.json();
             setResults(results);
@@ -52,10 +52,8 @@ export default function App() {
                     {isLoading ? <> <Spinner />Searching</> : <><SearchIcon />Search Product</>}
                 </button>
             </div>
-            <div className='w-full flex justify-center'>
-                {results && <ProductList results={results} />}
-                {error && <p className='text-red-500 text-xl font-bold'>{error}</p>}
-            </div>
+            {results && <ProductList results={results} />}
+            {error && <p className='text-red-500 text-xl font-bold'>{error}</p>}
         </div>
     );
 }
